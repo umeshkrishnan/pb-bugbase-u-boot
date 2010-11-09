@@ -225,7 +225,7 @@
  */
 #define CONFIG_NR_DRAM_BANKS	2
 #define PHYS_SDRAM_1		OMAP34XX_SDRC_CS0
-#define PHYS_SDRAM_1_SIZE	SZ_128M			/* At least 128 megs */
+#define PHYS_SDRAM_1_SIZE	SZ_256M			/* At least 128 megs */
 #define PHYS_SDRAM_2		OMAP34XX_SDRC_CS1
 #define CONFIG_OMAP3_MICRON_DDR		1
 

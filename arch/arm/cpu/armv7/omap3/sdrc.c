@@ -137,10 +137,15 @@ void do_sdrc_init(u32 cs, u32 early)
 		writel(ENADLL | DLLPHASE_90, &sdrc_base->dlla_ctrl);
 		sdelay(0x20000);
 	}
-
+#ifdef CONFIG_OMAP3PB
+	writel(RASWIDTH_14BITS | CASWIDTH_10BITS | ADDRMUXLEGACY |
+			RAMSIZE_256 | BANKALLOCATION | B32NOT16 | B32NOT16 |
+			DEEPPD | DDR_SDRAM, &sdrc_base->cs[cs].mcfg);
+#else
 	writel(RASWIDTH_13BITS | CASWIDTH_10BITS | ADDRMUXLEGACY |
 			RAMSIZE_128 | BANKALLOCATION | B32NOT16 | B32NOT16 |
 			DEEPPD | DDR_SDRAM, &sdrc_base->cs[cs].mcfg);
+#endif
 	writel(ARCV | ARE_ARCV_1, &sdrc_base->cs[cs].rfr_ctrl);
 	writel(V_ACTIMA_165, &sdrc_actim_base->ctrla);
 	writel(V_ACTIMB_165, &sdrc_actim_base->ctrlb);
