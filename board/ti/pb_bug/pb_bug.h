@@ -92,11 +92,11 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(GPMC_A1),	(IDIS | PTD | EN  | M4)) /*O_CAM_REN      */\
 	MUX_VAL(CP(GPMC_A2),	(IDIS | PTD | EN  | M4)) /*O_SD2_EN	  */\
 	MUX_VAL(CP(GPMC_A3),	(IEN | PTU | EN  | M4)) /*SPI_UART_INT#	  */\
-	MUX_VAL(CP(GPMC_A4),	(IDIS | PTD | EN  | M4)) /*O_CAM_PWRDN#	  */\
+	MUX_VAL(CP(GPMC_A4),	(IDIS | PTD | EN  | M4)) /*O_CAM_OSC_EN	  */\
 	MUX_VAL(CP(GPMC_A5),	(IDIS | PTD | EN  | M4)) /*O_CAM_RCLK_R/F#*/\
-	MUX_VAL(CP(GPMC_A6),	(IDIS | PTD | EN  | M4)) /*WIFI_RED	  */\
-	MUX_VAL(CP(GPMC_A7),	(IDIS | PTD | EN  | M4)) /*WIFI_GREEN	  */\
-	MUX_VAL(CP(GPMC_A8),	(IDIS | PTD | EN  | M4)) /*WIFI_BLUE	  */\
+	MUX_VAL(CP(GPMC_A6),	(IDIS | PTD | EN  | M4)) /*MCSPI1_CS4	  */\
+	MUX_VAL(CP(GPMC_A7),	(IDIS | PTD | EN  | M4)) /*MCSPI1_CS3	  */\
+	MUX_VAL(CP(GPMC_A8),	(IDIS | PTD | EN  | M4)) /*MCSPI1_CS1	  */\
 	MUX_VAL(CP(GPMC_A9),	(IDIS | PTD | EN  | M4)) /*SPI_UART_RST#  */\
 	MUX_VAL(CP(GPMC_A10),	(IEN | PTD | EN  | M4)) /*WALL_PRESENT#   */\
 	MUX_VAL(CP(GPMC_D0),	(IEN  | PTU | EN  | M0)) /*GPMC_D0*/\
@@ -117,18 +117,18 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(GPMC_D15),	(IEN  | PTU | EN  | M0)) /*GPMC_D15*/\
 	MUX_VAL(CP(GPMC_NCS0),	(IDIS | PTU | EN  | M0)) /*GPMC_nCS0*/\
 	MUX_VAL(CP(GPMC_NCS1),	(IDIS | PTU | EN  | M0)) /*GPMC_nCS1*/\
-	MUX_VAL(CP(GPMC_NCS2),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS2*/\
-	MUX_VAL(CP(GPMC_NCS3),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS3*/\
-	MUX_VAL(CP(GPMC_NCS4),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS4*/\
-	MUX_VAL(CP(GPMC_NCS5),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS5*/\
-	MUX_VAL(CP(GPMC_NCS6),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS6*/\
-	MUX_VAL(CP(GPMC_NCS7),	(IDIS | PTD | DIS  | M4)) /*GPMC_nCS7*/\
-	MUX_VAL(CP(GPMC_CLK),		(IDIS | PTU | EN  | M0))\
+	MUX_VAL(CP(GPMC_NCS2),	(IDIS | PTD | DIS  | M4)) /*LCLK_1V8*/\
+	MUX_VAL(CP(GPMC_NCS3),	(IEN  | PTU | EN   | M4)) /*LFRAME_1V8*/\
+	MUX_VAL(CP(GPMC_NCS4),	(IEN  | PTU | EN   | M4)) /*LAD_OMAP0*/\
+	MUX_VAL(CP(GPMC_NCS5),	(IEN  | PTU | EN   | M4)) /*LAD_OMAP1*/\
+	MUX_VAL(CP(GPMC_NCS6),	(IEN  | PTU | EN   | M4)) /*LAD_OMAP2*/\
+	MUX_VAL(CP(GPMC_NCS7),	(IEN  | PTU | EN   | M4)) /*LAD_OMAP3*/\
+	MUX_VAL(CP(GPMC_CLK),		(IDIS | PTD | DIS | M4))/*LRESET#_1V8*/\
 	MUX_VAL(CP(GPMC_NADV_ALE),	(IDIS | PTD | DIS | M0))\
 	MUX_VAL(CP(GPMC_NOE),		(IDIS | PTD | DIS | M0))\
 	MUX_VAL(CP(GPMC_NWE),		(IDIS | PTD | DIS | M0))\
 	MUX_VAL(CP(GPMC_NBE0_CLE),	(IDIS | PTU | EN  | M0))\
-	MUX_VAL(CP(GPMC_NBE1),		(IEN  | PTU | EN  | M0))\
+	MUX_VAL(CP(GPMC_NBE1),		(IEN  | PTD | DIS | M4))/*ACCEL_INT_1V8*/\
 	MUX_VAL(CP(GPMC_NWP),		(IEN  | PTD | DIS | M0))\
 	MUX_VAL(CP(GPMC_WAIT0),		(IEN  | PTU | EN  | M0))\
 	MUX_VAL(CP(GPMC_WAIT1),	(IEN  | PTD | EN  | M4))   /*I2C_EXP_INT   */\
@@ -178,15 +178,15 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(CAM_D5),	(IEN  | PTD | DIS | M0)) /*CAM_D5*/\
 	MUX_VAL(CP(CAM_D6),	(IEN  | PTD | DIS | M0)) /*CAM_D6*/\
 	MUX_VAL(CP(CAM_D7),	(IEN  | PTD | DIS | M0)) /*CAM_D7*/\
-	MUX_VAL(CP(CAM_D8),	(IDIS  | PTD | DIS | M4)) /*DOCK_RESET	*/\
-	MUX_VAL(CP(CAM_D9),	(IDIS  | PTD | DIS | M4)) /*MUTE	*/\
+	MUX_VAL(CP(CAM_D8),	(IEN  | PTU | EN  | M4)) /*SW_STATUS	*/\
+	MUX_VAL(CP(CAM_D9),	(IEN  | PTU | EN  | M4)) /*SD2_CD#	*/\
 	MUX_VAL(CP(CAM_D10),	(IDIS  | PTD | DIS | M4)) /*DR_MSECURE	*/\
-	MUX_VAL(CP(CAM_D11),	(IEN  | PTU | EN | M4))   /*SW_STATUS	*/\
+	MUX_VAL(CP(CAM_D11),	(IDIS | PTD | DIS | M4))   /*DOCK_RESET#*/\
 	MUX_VAL(CP(CAM_XCLKB),	(IDIS | PTD | DIS | M4))  /*USB_HPWR	*/\
 	MUX_VAL(CP(CAM_WEN),	(IEN  | PTU | EN | M4))   /*CAM_CK#	*/\
 	MUX_VAL(CP(CAM_STROBE),	(IDIS | PTD | DIS | M4))  /*HOST_RESET	*/\
-	MUX_VAL(CP(CSI2_DX0),	(IEN  | PTD | DIS | M0))  /*CSI2_DX0*/\
-	MUX_VAL(CP(CSI2_DY0),	(IEN  | PTD | DIS | M0)) /*CSI2_DY0*/\
+	MUX_VAL(CP(CSI2_DX0),	(IEN  | PTD | DIS | M0))  /*ASIC_ERROR_LED_1V8*/\
+	MUX_VAL(CP(CSI2_DY0),	(IEN  | PTD | DIS | M0)) /*DOCK_PRESENT#*/\
 	MUX_VAL(CP(CSI2_DX1),	(IEN  | PTD | DIS | M0)) /*CSI2_DX1*/\
 	MUX_VAL(CP(CSI2_DY1),	(IEN  | PTD | DIS | M0)) /*CSI2_DY1*/\
  /*Audio Interface */\
@@ -270,7 +270,7 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(I2C3_SDA),	(IEN  | PTU | EN  | M0)) /*I2C3_SDA*/\
 	MUX_VAL(CP(I2C4_SCL),	(IEN  | PTU | EN  | M0)) /*I2C4_SCL*/\
 	MUX_VAL(CP(I2C4_SDA),	(IEN  | PTU | EN  | M0)) /*I2C4_SDA*/\
-	MUX_VAL(CP(HDQ_SIO),	(IEN  | PTU | EN  | M4)) /*SD2_CD*/\
+	MUX_VAL(CP(HDQ_SIO),	(IDIS | PTD | DIS | M4)) /*ASIC_RESET#*/\
 	MUX_VAL(CP(MCSPI1_CLK),	(IEN  | PTD | DIS | M0)) /*McSPI1_CLK*/\
 	MUX_VAL(CP(MCSPI1_SIMO),(IEN  | PTD | DIS | M0)) /*McSPI1_SIMO*/\
 	MUX_VAL(CP(MCSPI1_SOMI),(IEN  | PTD | DIS | M0)) /*McSPI1_SOMI*/\
@@ -299,8 +299,8 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(SYS_BOOT6),	(IDIS | PTD | DIS | M4)) /*GPIO_8*/\
 							 /* - VIO_1V8*/\
 	MUX_VAL(CP(SYS_OFF_MODE),(IEN  | PTD | DIS | M0)) /*SYS_OFF_MODE*/\
-	MUX_VAL(CP(SYS_CLKOUT1), (IEN  | PTD | DIS | M0)) /*SYS_CLKOUT1*/\
-	MUX_VAL(CP(SYS_CLKOUT2), (IEN  | PTU | EN  | M0)) /*SYS_CLKOUT2*/\
+	MUX_VAL(CP(SYS_CLKOUT1), (IEN  | PTU | EN  | M4)) /*PIM2_INT# --touchscreen*/\
+	MUX_VAL(CP(SYS_CLKOUT2), (IDIS | PTD | DIS | M4)) /*SIGMA_ASIC_EN*/\
 	MUX_VAL(CP(JTAG_nTRST),	(IEN  | PTD | DIS | M0)) /*JTAG_nTRST*/\
 	MUX_VAL(CP(JTAG_TCK),	(IEN  | PTD | DIS | M0)) /*JTAG_TCK*/\
 	MUX_VAL(CP(JTAG_TMS),	(IEN  | PTD | DIS | M0)) /*JTAG_TMS*/\
