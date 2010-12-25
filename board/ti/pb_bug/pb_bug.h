@@ -278,7 +278,7 @@ static void setup_net_chip (void);
 	MUX_VAL(CP(MCSPI1_SIMO),(IEN  | PTD | DIS | M0)) /*McSPI1_SIMO*/\
 	MUX_VAL(CP(MCSPI1_SOMI),(IEN  | PTD | DIS | M0)) /*McSPI1_SOMI*/\
 	MUX_VAL(CP(MCSPI1_CS0),	(IDIS | PTD | DIS | M0)) /*SPI_UART_CS*/\
-	MUX_VAL(CP(MCSPI1_CS1),	(IEN  | PTD | EN  | M3)) /*MMC3_CMD*/\
+	MUX_VAL(CP(MCSPI1_CS1),	(IEN  | PTU | EN  | M3)) /*MMC3_CMD*/\
 							 /* TS_PEN_IRQ */\
 	MUX_VAL(CP(MCSPI1_CS2),	(IEN  | PTU | EN  | M3)) /*MMC3_CLK*/\
 							 /* - LAN_INTR*/\
